@@ -22,12 +22,16 @@ public:
     llvm::ConstantInt* ConstantIntValue(T value);
 
     template <class T>
+    llvm::Value* ConstantPointerValue(T* value);
+
+    template <class T>
         requires std::is_enum_v<T>
     llvm::ConstantInt* ConstantEnumValue(T value);
 
 public:
     const TCGModulePtr Module;
     llvm::LLVMContext& Context;
+
 };
 
 ////////////////////////////////////////////////////////////////////////////////
